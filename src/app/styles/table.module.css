@@ -1,0 +1,21 @@
+.table {
+    width: 100%;
+    border-collapse: seperate;
+    border-spacing: 20px 15px;
+    border: 1px solid;
+    border-color: white;
+}
+
+.headerRow {
+    text-align: left;
+}
+
+.headerCell {
+    font-weight: bold;
+    padding-bottom: 12px;
+    border-bottom: 2px solid white;
+}
+
+.row {
+    border-bottom: 1px solid white;
+}

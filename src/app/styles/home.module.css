@@ -1,0 +1,8 @@
+.formWrapperContainer {
+    position: relative;
+}
+
+.page {
+    display: flex;
+    min-height: 1000px;
+}
