@@ -11,28 +11,32 @@ export async function getAllShowPlayers() {
 export async function getPlayersFiltered(formData) {
     const base = 'SELECT name, buy_now, sell_now, ovr, rarity, profit FROM ShowPlayers WHERE 1=1';
     const rarityQuery = applyRarityFilters(base, formData);
-    const sellQuery = applySellPriceFilter(rarityQuery, formData)
+    const sellQuery = applySellPriceFilter(base, formData)
     const buyQuery = applyBuyPriceFilter(sellQuery, formData);
     const profitQuery = applyProfitFilter(buyQuery, formData);
     const liveQuery = applyLiveSeriesFilter(profitQuery, formData);
     const finalQuery = applySortingFilter(liveQuery, formData);
+    console.log('data base query: ', finalQuery)
     const rows = db.prepare(finalQuery).all();
     return rows;
 }
 
 function applyRarityFilters(query, formData) {
-    let statement = query + ' AND (rarity='
+    let statement = query;
+    let applied = false;
     const rarities = ['Diamond', 'Gold', 'Silver', 'Bronze', 'Common'];
     for (let rarity of rarities) {
         if (formData.has(rarity)) {
+            if (!applied) {
+                query += ' AND rarity='
+            }
+            applied = true;
             statement += "'" + rarity + "' OR rarity=";
         }
     }
-
-    if (statement === ' rarity=') {
-        return '';
-    }
-    return statement.slice(0, -11) + ')';
+    if (applied)
+        statement += ')';
+    return statement;
 }
 
 function applySellPriceFilter(query, formData) {
