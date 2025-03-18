@@ -11,7 +11,7 @@ def get_players():
     entries = []
     outer_fields = ['listing_name', 'best_sell_price', 'best_buy_price']
     desired_fields = ['ovr', 'is_live_set', 'uuid', 'trend', 'display_position', 'rarity']
-    url = 'https://mlb24.theshow.com/apis/listings.json?type=mlb_card'
+    url = 'https://mlb25.theshow.com/apis/listings.json?type=mlb_card'
     response = requests.get(url)
     entry_count = 1
     for i in range(1, response.json()['total_pages'] + 1):
@@ -33,10 +33,10 @@ def get_players():
     return entries
 
 def make_players_table(conn, cur):
-    desired_fields = ['name', 'buy_now', 'sell_now', 'ovr', 'is_live_set', 'uuid', 'trend', 'position', 'rarity']
+    desired_fields = ['name', 'buy_now', 'sell_now', 'ovr', 'is_live_set', 'uuid', 'trend', 'position', 'rarity', 'profit']
     types = {'name': 'TEXT', 'ovr': 'INT', 'is_live_set': 'INT',
              'uuid': 'TEXT', 'trend': 'TEXT', 'position': 'TEXT', 'rarity': 'TEXT', 
-             'buy_now': 'INT', 'sell_now': 'INT'
+             'buy_now': 'INT', 'sell_now': 'INT', 'profit': 'INT'
     }
     query = """CREATE TABLE IF NOT EXISTS ShowPlayers(id INT PRIMARY KEY, """
     for i, field in enumerate(desired_fields):
