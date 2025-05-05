@@ -1,8 +1,6 @@
 import requests
-import time
 import sqlite3
 import pandas as pd
-from pprint import pprint
 
 def calculate_profit(buy_now, sell_now):
     return int(((buy_now - 1) *.9) - (sell_now + 1))
@@ -53,15 +51,12 @@ def fill_players_table(conn, cur, data):
     conn.commit()
 
 if __name__ == '__main__':
-    while (True):
-        DELAY = 10
-        time.sleep(DELAY)
         print('fetching data from database')
         conn = sqlite3.connect('./MLB.db')
         cur = conn.cursor()
         make_players_table(conn, cur)
         fill_players_table(conn, cur, get_players())
-        print('database operation successful, waiting ',  DELAY,  ' seconds')
+        print('database operation successful')
 '''
 example response:
 
