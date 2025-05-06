@@ -28,21 +28,21 @@ function applyRarityFilters(query, formData) {
     for (let rarity of rarities) {
         if (formData.has(rarity)) {
             if (!applied) {
-                query += ' AND rarity='
+                statement += ' AND (rarity='
             }
             applied = true;
             statement += "'" + rarity + "' OR rarity=";
         }
     }
     if (applied)
-        statement += ')';
+        statement = statement.slice(0, statement.length - 11) + ')';
     return statement;
 }
 
 function applySellPriceFilter(query, formData) {
     let statement = query;
     if (formData.get('SellMin') !== '') {
-        statement += ' sell_now >= ' + formData.get('SellMin');
+        statement += ' AND sell_now >= ' + formData.get('SellMin');
     }
     if (formData.get('SellMax') !== '') {
         statement += ' AND sell_now <= ' + formData.get('SellMax');
