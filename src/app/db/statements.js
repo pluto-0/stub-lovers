@@ -11,7 +11,7 @@ export async function getAllShowPlayers() {
 export async function getPlayersFiltered(formData) {
     const base = 'SELECT name, buy_now, sell_now, ovr, rarity, profit FROM ShowPlayers WHERE 1=1';
     const rarityQuery = applyRarityFilters(base, formData);
-    const sellQuery = applySellPriceFilter(base, formData)
+    const sellQuery = applySellPriceFilter(rarityQuery, formData)
     const buyQuery = applyBuyPriceFilter(sellQuery, formData);
     const profitQuery = applyProfitFilter(buyQuery, formData);
     const liveQuery = applyLiveSeriesFilter(profitQuery, formData);
@@ -90,3 +90,13 @@ function applySortingFilter(query, formData) {
     }
     return statement;
 }
+
+/*
+ns-645.awsdns-16.net
+
+ns-350.awsdns-43.com
+
+ns-1307.awsdns-35.org
+
+ns-1747.awsdns-26.co.uk
+*/

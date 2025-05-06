@@ -1,0 +1,5 @@
+version: 1
+cron:
+  name: "fetch"
+  url: "/src/app/db/show_data.py"
+  schedule: "5 * * * *"

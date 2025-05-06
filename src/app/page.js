@@ -20,3 +20,12 @@ export default async function Home() {
     <ClientWrapper initialData={initialData} />
   </div>;
 }
+
+/*
+on registered domain page route 53:
+
+    ns-1817.awsdns-35.co.uk
+    ns-1297.awsdns-34.org
+    ns-115.awsdns-14.com
+    ns-958.awsdns-55.net
+*/
