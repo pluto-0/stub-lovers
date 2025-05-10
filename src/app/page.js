@@ -1,9 +1,4 @@
-/*
-TO DO
-
-make profit a column in ShowPlayers, update database, and ordery by profit descending on initial load
-add rest of filters and sorting options
-*/
+export const dynamic = 'force-dynamic';
 
 import ClientWrapper from './components/ClientWrapper';
 import { getAllShowPlayers } from './db/statements';
