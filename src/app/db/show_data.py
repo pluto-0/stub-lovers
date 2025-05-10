@@ -1,7 +1,5 @@
 import requests
 import sqlite3
-import pandas as pd
-
 
 
 def calculate_profit(buy_now, sell_now):
