@@ -23,6 +23,7 @@ body {
 
 /* Header styles */
 h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--dark-red);
   text-align: center;
   padding: 1rem 0;

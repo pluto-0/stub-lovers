@@ -1,4 +1,5 @@
 import styles from '../styles/table.module.css'
+import icon from '../icon.ico'
 
 export default function Table({player_data}) {
     const rows = [];

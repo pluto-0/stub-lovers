@@ -2,7 +2,13 @@ export const dynamic = 'force-dynamic';
 
 import ClientWrapper from './components/ClientWrapper';
 import { getAllShowPlayers } from './db/statements';
+import { Metadata } from 'next';
 import styles from './styles/home.module.css';
+
+export const metadata = {
+  title: "Stub Lovers",
+  description: "Make stubs MLB The Show 25"
+};
 
 function Header() {
   return <h1>Market Flips</h1>;
