@@ -1,9 +1,56 @@
+.formWrapperContainer {
+  color: var(--white);
+  width: var(--sidebar-width);
+  background-color: var(--black);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: all var(--transition-speed) ease;
+  overflow-y: auto;
+  height: calc(100vh - 80px);
+  position: sticky;
+  top: 80px;
+}
+
 .formWrapper {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
+  padding: 1rem;
+  border-right: solid;
+  border-right-width: thin;
+  border-color: var(--white);
 }
 
 .filter {
-    color: white;
+  margin-bottom: 1.5rem;
+}
+
+.rarityLabel {
+  width: 80px;
+  display: inline-block;
+}
+
+.rarityInput {
+  width: auto;
+}
+
+.collapsed {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.toggleSidebar {
+  position: fixed;
+  left: 10px;
+  top: 80px;
+  background: var(--dark-red);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }

@@ -1,5 +1,4 @@
 'use client';
- 
 import { useState } from 'react';
 import { useTransition } from 'react';
 import { updateData } from '../actions/data-actions';
@@ -7,7 +6,7 @@ import styles from '../styles/filters.module.css';
 
 export default function FiltersForm({ updateFunction }) {
     const [isPending, startTransition] = useTransition();
-    const [collapsed, setCollapsed] = useState(true);
+    const [collapsed, setCollapsed] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -20,19 +19,30 @@ export default function FiltersForm({ updateFunction }) {
             }
         });
     }
-    return <div className={styles.formWrapperContainer}>
-            <div className={styles.formWrapper}>
-                <form onSubmit={ handleSubmit }>
-                    <RarityFilter />
-                    <BuyPriceFilter />
-                    <SellPriceFilter />
-                    <ProfitFilter />
-                    <LiveSeriesFilter />
-                    <SortingFilter />
-                    <input type="submit" value="Apply"></input>
-                </form>
+    
+    return (
+        <>
+            <button 
+                className={styles.toggleSidebar} 
+                onClick={() => setCollapsed(!collapsed)}
+            >
+                {collapsed ? '>' : '<'}
+            </button>
+            <div className={`${styles.formWrapperContainer} ${collapsed ? styles.collapsed : ''}`}>
+                <div className={styles.formWrapper}>
+                    <form onSubmit={handleSubmit}>
+                        <RarityFilter />
+                        <BuyPriceFilter />
+                        <SellPriceFilter />
+                        <ProfitFilter />
+                        <LiveSeriesFilter />
+                        <SortingFilter />
+                        <input type="submit" value="Apply"></input>
+                    </form>
+                </div>
             </div>
-        </div>;
+        </>
+    );
 }
 
 function RarityFilter() {
