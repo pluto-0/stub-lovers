@@ -1,7 +1,9 @@
 export const dynamic = 'force-dynamic';
 
 import ClientWrapper from './components/ClientWrapper';
+import Header from './components/Header'
 import { getAllShowPlayers } from './db/statements';
+import Link from 'next/link'
 import { Metadata } from 'next';
 import styles from './styles/home.module.css';
 
@@ -10,14 +12,11 @@ export const metadata = {
   description: "Make stubs MLB The Show 25"
 };
 
-function Header() {
-  return <h1>Market Flips</h1>;
-}
-
 export default async function Home() {
   const initialData = await getAllShowPlayers();
+  const cur_page = "players";
   return <div>
-    <Header />
+    <Header cur_page={cur_page}/>
     <ClientWrapper initialData={initialData} />
   </div>;
 }
