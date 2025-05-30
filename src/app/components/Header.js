@@ -13,6 +13,7 @@ const page_titles = {
 
 export default function Header({ cur_page }) {
   const pages = ['players', 'contact']
+  const google_form_link = 'https://docs.google.com/forms/d/e/1FAIpQLSc_mj_LulfMto2qY_dF96AROqJ5YiDwmmG0thBQC4wFteLN6g/viewform?usp=dialog'
   
   return (
     <div className="header">
@@ -27,6 +28,8 @@ export default function Header({ cur_page }) {
             {page}
           </Link>
         ))}
+        
+        <Link href={google_form_link} rel="noopener noreferrer" target="_blank">vote on upcoming features!</Link>
       </div>
     </div>
   )
