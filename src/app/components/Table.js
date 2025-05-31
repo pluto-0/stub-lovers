@@ -1,10 +1,15 @@
 import styles from '../styles/table.module.css'
 import icon from '../icon.ico'
+import Pages from './Pages';
 
-export default function Table({player_data}) {
+const ROWS_PER_PAGE = 10;
+
+export default function Table({player_data, page, setPage}) {
     const rows = [];
-    for (const [index, entry] of player_data.entries()) {
-        rows.push(<Row key={index} player_obj={entry}/>);
+    let index;
+    for (let i = 0; i < ROWS_PER_PAGE && i < player_data.length; ++i) {
+        index = i + (ROWS_PER_PAGE * (page - 1));
+        rows.push(<Row key={index} player_obj={player_data[index]}/>)
     }
     return <table className={styles.table}>
         <tr className={styles.headerRow}>

@@ -10,6 +10,7 @@
   color: var(--white);
   position: sticky;
   top: 0;
+  width: max-content;
 }
 
 .headerCell {
@@ -22,6 +23,7 @@
   color: var(--white);
   background-color: var(--black);
   transition: transform 0.2s, box-shadow 0.2s;
+  width: 99%;
 }
 
 .row:hover {

@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import ClientWrapper from './components/ClientWrapper';
 import Header from './components/Header'
+import Pages from './components/Pages'
 import { getAllShowPlayers } from './db/statements';
 import Link from 'next/link'
 import { Metadata } from 'next';

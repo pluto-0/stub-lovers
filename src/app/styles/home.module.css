@@ -1,8 +1,71 @@
-.formWrapperContainer {
-    position: relative;
+.page {
+  display: flex;          /* Flex container (horizontal by default) */
+  min-height: calc(100vh - 80px);
+  gap: 20px;             /* Adds spacing between FiltersForm and right section */
 }
 
-.page {
+.rightSection {
+  flex: 1;               /* Takes remaining space */
   display: flex;
-  min-height: calc(100vh - 80px);
+  flex-direction: column; /* Stacks Pages and Table vertically */
+  gap: 8px;             /* Adds space between Pages and Table */
+}
+
+/* Optional: Adjust FiltersForm width if needed */
+.filtersForm {
+  width: 250px;          /* Fixed width for FiltersForm */
+}
+
+.paginationButtons {
+  position: relative;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0;
+  z-index: 6;
+  margin: 50px 0;
+  
+  animation: cdp-in 500ms ease both;
+  animation-timeout: 200ms;
+
+  &_i {
+    font-size: 14px;
+    text-decoration: none;
+    
+    transition: background 250ms;
+    
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 0 3px 6px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 38px;
+    border: 2px solid #fff;
+    line-height: 38px;
+    padding: 0;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: .03em;
+    display: none;
+
+    &:first-child,
+    &:last-child {
+      padding: 0 16px;
+      margin: 0 12px 6px;
+    }
+
+    &:last-child,
+    &:nth-child(2),
+    &:nth-last-child(2) {
+      display: inline-block;
+    }
+  }
+
+  &_i:hover {
+    background-color: #000;
+    color: #fff;
+  }
+
+  &:not([actpage="1"]) &_i:nth-child(1) {
+    display: inline-block;
+  }
 }
