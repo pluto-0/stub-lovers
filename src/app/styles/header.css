@@ -51,7 +51,7 @@
 }
 
 .nav-links a:hover {
-  color: #111827; /* Darker on hover */
+  color: var(--dark-red); /* Darker on hover */
 }
 
 .nav-links a::after {
