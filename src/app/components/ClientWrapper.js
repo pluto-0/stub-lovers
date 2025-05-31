@@ -11,17 +11,17 @@ export default function ClientWrapper({ initialData }) {
   const [page, setPage] = useState(1);
   const itemsPerPage = 10;
 
-  const totalPages = Math.floor(data.length / itemsPerPage);
+  const totalPages = Math.ceil(data.length / itemsPerPage);
   const paginatedData = data.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
   );
 
   return <div className={styles.page}>
-    <FiltersForm updateFunction={setData} />
+    <FiltersForm updateFunction={setData} setPage={setPage}/>
     <div className={styles.rightSection}>
-      <Pages page={page} setPage={setPage} totalPages={totalPages} className={styles.paginationButtons}/>
-      <Table player_data={data} page={page}/>
+      <Pages page={page} setPage={setPage} totalPages={totalPages - 1} className={styles.paginationButtons}/>
+      <Table player_data={data} data_index={page * itemsPerPage}/>
     </div>
     </div>;
 }

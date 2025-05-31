@@ -4,12 +4,10 @@ import Pages from './Pages';
 
 const ROWS_PER_PAGE = 10;
 
-export default function Table({player_data, page, setPage}) {
+export default function Table({player_data, data_index}) {
     const rows = [];
-    let index;
-    for (let i = 0; i < ROWS_PER_PAGE && i < player_data.length; ++i) {
-        index = i + (ROWS_PER_PAGE * (page - 1));
-        rows.push(<Row key={index} player_obj={player_data[index]}/>)
+    for (let i = data_index; i < player_data.length && rows.length < ROWS_PER_PAGE; ++i) {
+        rows.push(<Row key={i} player_obj={player_data[i]}/>)
     }
     return <table className={styles.table}>
         <tr className={styles.headerRow}>

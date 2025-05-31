@@ -4,12 +4,13 @@ import { useTransition } from 'react';
 import { updateData } from '../actions/data-actions';
 import styles from '../styles/filters.module.css';
 
-export default function FiltersForm({ updateFunction }) {
+export default function FiltersForm({ updateFunction, setPage }) {
     const [isPending, startTransition] = useTransition();
     const [collapsed, setCollapsed] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setPage(1);
         const formData = new FormData(event.target);
 
         startTransition(async () => {
