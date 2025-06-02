@@ -13,6 +13,7 @@
 
 /* Optional: Adjust FiltersForm width if needed */
 .filtersForm {
+  position: absolute;
   width: 250px;          /* Fixed width for FiltersForm */
 }
 

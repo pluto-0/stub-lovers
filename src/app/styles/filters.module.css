@@ -1,4 +1,11 @@
+@media (max-width: 768px) {
+  .formWrapperContainer {
+    flex-shrink: 0;
+  }
+}
 .formWrapperContainer {
+  z-index: 100000;
+  display: flex;
   color: var(--white);
   width: var(--sidebar-width);
   background-color: var(--black);
@@ -6,12 +13,14 @@
   padding: rem;
   transition: all var(--transition-speed) ease;
   overflow-y: auto;
+  overflow-x: auto;
   height: calc(100vh - 80px);
   position: sticky;
   top: 80px;
 }
 
 .formWrapper {
+  position: absolute;
   padding: 1rem;
   border-right: solid;
   border-right-width: thin;
@@ -38,7 +47,7 @@
 }
 
 .toggleSidebar {
-  position: fixed;
+  position: absolute;
   left: 10px;
   top: 98px;
   background: var(--dark-red);

@@ -78,3 +78,14 @@
 .nav-links a[aria-current="page"]::after {
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .header {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  .nav-links {
+    -webkit-overflow-scrolling: touch;
+  }
+}

@@ -10,12 +10,14 @@ export default function Table({player_data, data_index}) {
     for (let i = data_index; i < player_data.length && rows.length < ROWS_PER_PAGE; ++i) {
         rows.push(<Row key={i} player_obj={player_data[i]}/>)
     }
-    return <table className={styles.table}>
-        <tr className={styles.headerRow}>
-            {cols.map(col => <th className={styles.headerCell} key={col}>{col}</th>)}
-        </tr>
-        {rows}
-    </table>;
+    return <div className={styles.container}>
+            <table className={styles.table}>
+                <tr className={styles.headerRow}>
+                    {cols.map(col => <th className={styles.headerCell} key={col}>{col}</th>)}
+                </tr>
+                {rows}
+            </table>
+        </div>;
 }
 
 function Row({player_obj}) {

@@ -19,6 +19,7 @@ body {
   background-color: var(--charcoal);
   color: var(--charcoal);
   line-height: 1.6;
+  height: auto;
 }
 
 /* Header styles */
@@ -153,7 +154,7 @@ label {
 /* Responsive design */
 @media (max-width: 768px) {
   .page {
-    flex-direction: column;
+    flex-direction: row;
   }
   
   .formWrapperContainer {

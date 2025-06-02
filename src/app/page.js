@@ -2,9 +2,8 @@ export const dynamic = 'force-dynamic';
 
 import ClientWrapper from './components/ClientWrapper';
 import Header from './components/Header'
-import Pages from './components/Pages'
 import { getAllShowPlayers } from './db/statements';
-import Link from 'next/link'
+import Head from 'next/head'
 import { Metadata } from 'next';
 import styles from './styles/home.module.css';
 
@@ -17,6 +16,9 @@ export default async function Home() {
   const initialData = await getAllShowPlayers();
   const cur_page = "players";
   return <div>
+    <Head>
+      <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'/>
+    </Head>
     <Header cur_page={cur_page}/>
     <ClientWrapper initialData={initialData} />
   </div>;
