@@ -2,6 +2,7 @@
   display: flex;          /* Flex container (horizontal by default) */
   min-height: calc(100vh - 80px);
   gap: 20px;             /* Adds spacing between FiltersForm and right section */
+  min-width: 0;
 }
 
 .rightSection {
@@ -9,6 +10,7 @@
   display: flex;
   flex-direction: column; /* Stacks Pages and Table vertically */
   gap: 8px;             /* Adds space between Pages and Table */
+  min-width: 0;
 }
 
 /* Optional: Adjust FiltersForm width if needed */

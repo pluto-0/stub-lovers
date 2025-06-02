@@ -12,13 +12,12 @@
   }
 
   .scrollableArea {
-    min-width: 800px; /* Set the scroll area width here */
+    touch-action: pan-x;
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
   }
 
   .scrollableArea table {
-    overflow-x: auto;
     width: 100%;
   }
   
