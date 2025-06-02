@@ -12,7 +12,6 @@
   }
 
   .scrollableArea {
-    touch-action: pan-x;
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
   }
