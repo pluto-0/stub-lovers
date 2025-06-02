@@ -11,12 +11,14 @@ export default function Table({player_data, data_index}) {
         rows.push(<Row key={i} player_obj={player_data[i]}/>)
     }
     return <div className={styles.container}>
+        <div className={styles.scrollableArea}>
             <table className={styles.table}>
                 <tr className={styles.headerRow}>
                     {cols.map(col => <th className={styles.headerCell} key={col}>{col}</th>)}
                 </tr>
                 {rows}
             </table>
+            </div>
         </div>;
 }
 

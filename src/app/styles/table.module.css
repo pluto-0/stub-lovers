@@ -8,23 +8,25 @@
 @media (max-width: 768px) {
   .container {
     flex: 1;
-    flex-shrink: 1;
     min-width: 0;
-    width: calc(100% - var(--sidebard-width));
-    overflow-x: auto;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
+  .scrollableArea {
+    min-width: 800px; /* Set the scroll area width here */
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+  }
+
+  .scrollableArea table {
+    overflow-x: auto;
+    width: 100%;
+  }
+  
   .table {
     padding-right: 20px;
     flex: 1;
-    min-width: none;
-    overflow-x:auto;
-    flex-shrink: 1;
+    min-width: 800px;
     width: calc(100% - var(--sidebar-width));
-    display: inline-block;
-    table-layout: fixed;
   }
   .headerRow {
     width: auto;
@@ -59,6 +61,7 @@
     font-weight: bold;
   }
 }
+
 .headerRow {
   background-color: var(--charcoal);
   color: var(--white);
