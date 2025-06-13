@@ -1,7 +1,7 @@
 const db = require('better-sqlite3')('./src/app/db/MLB.db');
 
 export async function getAllShowPlayers() {
-    const sql = 'SELECT name, buy_now, sell_now, ovr, rarity, profit, uuid FROM ShowPlayers ORDER BY profit DESC';
+    const sql = 'SELECT name, buy_now, sell_now, ovr, rarity, profit, uuid, is_live_set FROM ShowPlayers ORDER BY profit DESC';
     const rows = db.prepare(sql).all();
     return rows;
 }
@@ -9,7 +9,7 @@ export async function getAllShowPlayers() {
 // base query has 1=1 to avoid logic of adding where if and only if a filter is active
 // This way all the filters can simply add an AND ____ if they are active
 export async function getPlayersFiltered(formData) {
-    const base = 'SELECT name, buy_now, sell_now, ovr, rarity, profit, uuid FROM ShowPlayers WHERE 1=1';
+    const base = 'SELECT name, buy_now, sell_now, ovr, rarity, profit, uuid, is_live_set FROM ShowPlayers WHERE 1=1';
     const rarityQuery = applyRarityFilters(base, formData);
     const sellQuery = applySellPriceFilter(rarityQuery, formData)
     const buyQuery = applyBuyPriceFilter(sellQuery, formData);

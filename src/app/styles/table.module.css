@@ -102,3 +102,13 @@
   border-bottom-right-radius: var(--border-radius);
   border-right-style: solid;
 }
+
+.cell.sellNowZero {
+  color: red !important;
+}
+
+.tooltip {
+  width: 30px;
+  color: white;
+  text-align: center;
+}
