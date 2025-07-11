@@ -1,11 +1,64 @@
 import requests
 import sqlite3
 
+def get_quicksell_price_live(ovr, rarity):
+    if rarity == 'Common':
+        return 5
+    elif rarity == 'Bronze':
+        return 25
+    elif rarity == 'Silver':
+        return 50 + (ovr - 75) * 25
+    elif rarity == 'Gold':
+        if ovr == 80:
+            return 400
+        return 600 + (ovr - 81) * 300
+    elif rarity == 'Diamond':
+        if ovr < 88:
+            return 3000 + (ovr - 85) * 750
+        if ovr < 90:
+            return 5500 + (ovr - 88) * 1500
+        if ovr == 90:
+            return 80000
+        if ovr < 92:
+            return 9000
+        return 10000
 
-def calculate_profit(buy_now, sell_now):
+def get_quicksell_price_nonlive(ovr, rarity):
+    if rarity == 'Common':
+        return 2
+    if rarity == 'Bronze':
+        return 12
+    if rarity == 'Silver':
+        if ovr == 75:
+            return 25
+        if ovr == 76:
+            return 37
+        if ovr == 77:
+            return 50 
+        if ovr == 78:
+            return 62
+        if ovr == 79:
+            return 75
+    if rarity == 'Gold':
+        if ovr == 80:
+            return 200
+        return 300 + (ovr - 81) * 150
+    if rarity == 'Diamond':
+        if ovr < 88:
+            return 1500 + (ovr - 85) * 375
+        elif ovr < 90:
+            return 2750 + (ovr - 88) * 750
+        elif ovr == 90:
+            return 4000
+        elif ovr < 92:
+            return 4500
+        return 5000
 
+def calculate_profit(buy_now, sell_now, ovr, rarity, is_live_set):
+    if sell_now == 0:
+        quicksell = get_quicksell_price_live(ovr, rarity) if is_live_set else get_quicksell_price_nonlive(ovr, rarity) 
+        return int(((buy_now - 1) *.9) - (quicksell + 1))
     return int(((buy_now - 1) *.9) - (sell_now + 1))
-
 
 
 def get_players():
@@ -48,7 +101,7 @@ def get_players():
 
                 entry.append(item['item'][field])
 
-            entry.append(calculate_profit(item['best_sell_price'], item['best_buy_price']))
+            entry.append(calculate_profit(item['best_sell_price'], item['best_buy_price'], item['item']['ovr'], item['item']['rarity'], item['item']['is_live_set']))
 
             entries.append(tuple(entry))
 
