@@ -104,8 +104,8 @@ function SortingFilter() {
         <h3>Sort by</h3>
         <select name='SortBy'>
             <option value=''></option>
-            <option value='buy now'>buy now</option>
-            <option value='sell now'>sell now</option>
+            <option value='buy_now'>buy now</option>
+            <option value='sell_now'>sell now</option>
             <option value='profit'>profit</option>
         </select>
         <select name='Order'>
